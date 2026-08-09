@@ -82,14 +82,13 @@
         margin-bottom: 10px;
     }
 
-    /* ÁREA DE DOWNLOADS */
+    /* MOLDURA DE DOWNLOADS */
     .downloads {
         width: 100%;
         max-width: 500px;
-        aspect-ratio: 1 / 1;
 
-        display: grid;
-        grid-template-rows: 0fr;
+        /* COMEÇA SEM ALTURA */
+        height: 0;
 
         margin: 0 auto;
 
@@ -102,13 +101,12 @@
         text-align: center;
 
         opacity: 0;
-
         overflow: hidden;
 
         box-shadow: 0 0 0 rgba(0, 0, 0, 0);
 
         transition:
-            grid-template-rows 0.6s ease,
+            height 0.6s ease,
             margin-top 0.6s ease,
             padding-top 0.6s ease,
             padding-bottom 0.6s ease,
@@ -116,19 +114,9 @@
             box-shadow 0.6s ease;
     }
 
-    /* CONTEÚDO INTERNO */
-    .downloads-inner {
-        min-height: 0;
-        overflow: hidden;
-
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-
-    /* MOLDURA QUADRADA ABERTA */
+    /* MOLDURA ABERTA */
     .downloads.show {
-        grid-template-rows: 1fr;
+        height: 500px;
 
         margin-top: 30px;
 
@@ -140,9 +128,19 @@
         box-shadow: 0 6px 24px rgba(0, 0, 0, 0.09);
     }
 
+    /* CONTEÚDO */
+    .downloads-inner {
+        height: 100%;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        overflow: hidden;
+    }
+
     .downloads h2 {
-        margin-top: 0;
-        margin-bottom: 25px;
+        margin: 0 0 18px 0;
     }
 
     /* BOTÃO ANDROID */
@@ -155,7 +153,7 @@
         width: 100%;
         max-width: 400px;
 
-        margin: auto;
+        margin: 0 auto;
 
         padding: 15px;
 
@@ -186,7 +184,7 @@
 
     /* OR */
     .or {
-        margin: 18px 0;
+        margin: 10px 0;
         color: #999;
         font-size: 15px;
         font-weight: bold;
@@ -197,7 +195,8 @@
         width: 100%;
         max-width: 400px;
 
-        margin: auto;
+        margin: 0 auto;
+
         padding: 15px;
 
         background: #1677ff;
@@ -218,7 +217,7 @@
 
     /* COMING SOON */
     .coming-soon {
-        margin-top: 10px;
+        margin-top: 7px;
         color: #1677ff;
         font-size: 14px;
         font-weight: bold;
@@ -279,13 +278,11 @@
 
         .downloads {
             max-width: 400px;
-            padding-left: 25px;
-            padding-right: 25px;
         }
 
         .downloads.show {
-            padding-top: 25px;
-            padding-bottom: 25px;
+            height: 400px;
+            padding: 25px;
         }
     }
 </style>
@@ -377,12 +374,12 @@
         const downloads =
             document.getElementById("downloads");
 
-        /* ATIVA A EXPANSÃO */
+        /* ATIVA A ANIMAÇÃO */
         downloads.classList.add("show");
 
         /*
-         * Espera a animação começar e
-         * leva a página suavemente até a moldura.
+         * Espera a moldura começar a crescer
+         * antes de rolar a página.
          */
         setTimeout(() => {
 
@@ -391,7 +388,7 @@
                 block: "center"
             });
 
-        }, 100);
+        }, 150);
     }
 
 
