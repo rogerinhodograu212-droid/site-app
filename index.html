@@ -1,276 +1,304 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+```html
+<title>Trick Roll</title>
 
-    <title>Trick Roll</title>
+<style>
+    * {
+        box-sizing: border-box;
+    }
 
-    <style>
-        * {
-            box-sizing: border-box;
+    body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: Arial, Helvetica, sans-serif;
+        background: #f2f4f7;
+        color: #222;
+        padding: 40px 20px;
+    }
+
+    /* RETÂNGULO PRINCIPAL */
+    .app-card {
+        width: 100%;
+        max-width: 850px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 18px;
+        padding: 28px 35px 40px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.10);
+
+        /* ANIMAÇÃO DA ALTURA */
+        transition: padding-bottom 0.5s ease;
+    }
+
+    /* PARTE DE CIMA */
+    .top {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+    }
+
+    /* LOGO */
+    .logo {
+        width: 75px;
+        height: 75px;
+        border-radius: 18px;
+        object-fit: cover;
+    }
+
+    /* NOME DO APP */
+    .app-name {
+        font-size: 30px;
+        font-weight: bold;
+        margin: 0;
+        transform: translateX(8px);
+    }
+
+    /* BOTÃO BAIXAR */
+    .download-main {
+        margin-left: auto;
+        background: #1677ff;
+        color: white;
+        border: none;
+        border-radius: 9px;
+        padding: 14px 27px;
+        font-size: 17px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+    .download-main:hover {
+        background: #075dcc;
+        transform: translateY(-2px);
+    }
+
+    /* DESCRIÇÃO */
+    .description {
+        margin-top: 35px;
+        line-height: 1.7;
+        color: #555;
+        font-size: 17px;
+    }
+
+    .description h2 {
+        color: #666;
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+
+    /* ÁREA DE DOWNLOADS */
+    .downloads {
+        display: grid;
+        grid-template-rows: 0fr;
+        margin-top: 0;
+        background: white;
+        border: 1px solid transparent;
+        border-radius: 15px;
+        padding: 0 30px;
+        text-align: center;
+        opacity: 0;
+
+        overflow: hidden;
+
+        transition:
+            grid-template-rows 0.55s ease,
+            margin-top 0.55s ease,
+            padding-top 0.55s ease,
+            padding-bottom 0.55s ease,
+            opacity 0.35s ease,
+            border-color 0.55s ease;
+    }
+
+    .downloads-inner {
+        min-height: 0;
+        overflow: hidden;
+    }
+
+    .downloads.show {
+        grid-template-rows: 1fr;
+        margin-top: 30px;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        opacity: 1;
+        border-color: #e5e5e5;
+    }
+
+    .downloads h2 {
+        margin-top: 0;
+        margin-bottom: 25px;
+    }
+
+    /* BOTÃO ANDROID */
+    .android-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        width: 100%;
+        max-width: 400px;
+        margin: auto;
+        padding: 15px;
+        background: #34a853;
+        color: white;
+        border: none;
+        border-radius: 9px;
+        font-size: 17px;
+        font-weight: bold;
+        text-decoration: none;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+    .android-button:hover {
+        background: #278c44;
+        transform: translateY(-2px);
+    }
+
+    /* ÍCONE ANDROID */
+    .android-icon {
+        font-size: 22px;
+    }
+
+    /* OR */
+    .or {
+        margin: 18px 0;
+        color: #999;
+        font-size: 15px;
+        font-weight: bold;
+    }
+
+    /* BOTÃO IOS */
+    .ios-button {
+        width: 100%;
+        max-width: 400px;
+        margin: auto;
+        padding: 15px;
+        background: #1677ff;
+        color: white;
+        border: none;
+        border-radius: 9px;
+        font-size: 17px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .ios-button:hover {
+        background: #075dcc;
+    }
+
+    /* COMING SOON */
+    .coming-soon {
+        margin-top: 10px;
+        color: #1677ff;
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    /* ANIMAÇÃO SUAVE */
+    .jump {
+        animation: jump 0.45s ease;
+    }
+
+    @keyframes jump {
+        0% {
+            transform: translateY(0);
         }
 
-        body {
-            margin: 0;
-            min-height: 100vh;
-            font-family: Arial, Helvetica, sans-serif;
-            background: #f2f4f7;
-            color: #222;
-            padding: 40px 20px;
+        35% {
+            transform: translateY(-3px);
         }
 
-        /* RETÂNGULO PRINCIPAL */
+        65% {
+            transform: translateY(1px);
+        }
+
+        100% {
+            transform: translateY(0);
+        }
+    }
+
+    /* CELULAR */
+    @media (max-width: 600px) {
+
         .app-card {
-            width: 100%;
-            max-width: 850px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 18px;
-            padding: 28px 35px 40px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.10);
+            padding: 22px;
         }
 
-        /* PARTE DE CIMA */
         .top {
-            display: flex;
-            align-items: center;
-            gap: 18px;
+            gap: 12px;
         }
 
-        /* LOGO */
         .logo {
-            width: 75px;
-            height: 75px;
-            border-radius: 18px;
-            object-fit: cover;
+            width: 60px;
+            height: 60px;
         }
 
-        /* NOME DO APP */
         .app-name {
-            font-size: 30px;
-            font-weight: bold;
-            margin: 0;
+            font-size: 23px;
+            transform: translateX(8px);
         }
 
-        /* BOTÃO BAIXAR */
         .download-main {
-            margin-left: auto;
-            background: #1677ff;
-            color: white;
-            border: none;
-            border-radius: 9px;
-            padding: 14px 27px;
-            font-size: 17px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.2s;
+            padding: 11px 16px;
+            font-size: 15px;
         }
 
-        .download-main:hover {
-            background: #075dcc;
-            transform: translateY(-2px);
-        }
-
-        /* DESCRIÇÃO */
         .description {
-            margin-top: 35px;
-            line-height: 1.7;
-            color: #555;
-            font-size: 17px;
+            font-size: 16px;
         }
 
-        .description h2 {
-            color: #222;
-            margin-bottom: 10px;
-        }
-
-        /* ÁREA DE DOWNLOADS */
         .downloads {
-            display: none;
-            margin-top: 30px;
-            background: white;
-            border: 1px solid #e5e5e5;
-            border-radius: 15px;
-            padding: 30px;
-            text-align: center;
+            padding-left: 18px;
+            padding-right: 18px;
         }
 
         .downloads.show {
-            display: block;
+            padding-top: 25px;
+            padding-bottom: 25px;
         }
+    }
+</style>
 
-        .downloads h2 {
-            margin-top: 0;
-            margin-bottom: 25px;
-        }
+<div class="app-card">
 
-        /* BOTÃO ANDROID */
-        .android-button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            width: 100%;
-            max-width: 400px;
-            margin: auto;
-            padding: 15px;
-            background: #34a853;
-            color: white;
-            border: none;
-            border-radius: 9px;
-            font-size: 17px;
-            font-weight: bold;
-            text-decoration: none;
-            cursor: pointer;
-            transition: 0.2s;
-        }
+    <!-- PARTE SUPERIOR -->
+    <div class="top">
 
-        .android-button:hover {
-            background: #278c44;
-            transform: translateY(-2px);
-        }
+        <!-- COLOQUE SUA LOGO COMO logo.png -->
+        <img src="logo.png" class="logo" alt="Logo do Trick Roll">
 
-        /* ÍCONE ANDROID */
-        .android-icon {
-            font-size: 22px;
-        }
+        <h1 class="app-name">
+            Trick Roll
+        </h1>
 
-        /* OR */
-        .or {
-            margin: 18px 0;
-            color: #999;
-            font-size: 15px;
-            font-weight: bold;
-        }
+        <button class="download-main" onclick="mostrarDownloads()">
+            Baixar
+        </button>
 
-        /* BOTÃO IOS */
-        .ios-button {
-            width: 100%;
-            max-width: 400px;
-            margin: auto;
-            padding: 15px;
-            background: #1677ff;
-            color: white;
-            border: none;
-            border-radius: 9px;
-            font-size: 17px;
-            font-weight: bold;
-            cursor: pointer;
-        }
+    </div>
 
-        .ios-button:hover {
-            background: #075dcc;
-        }
+    <!-- DESCRIÇÃO -->
+    <div class="description">
 
-        /* COMING SOON */
-        .coming-soon {
-            margin-top: 10px;
-            color: #1677ff;
-            font-size: 14px;
-            font-weight: bold;
-        }
+        <h2>Sobre o Trick Roll</h2>
 
-        /* ANIMAÇÃO SUAVE */
-        .jump {
-            animation: jump 0.45s ease;
-        }
+        <p>
+            O Trick Roll é um aplicativo criado para
+            proporcionar uma experiência simples, rápida
+            e divertida.
+        </p>
 
-        @keyframes jump {
-            0% {
-                transform: translateY(0);
-            }
+        <p>
+            Com o aplicativo, você pode aproveitar seus
+            recursos de maneira fácil e intuitiva,
+            diretamente pelo seu celular.
+        </p>
 
-            35% {
-                transform: translateY(-3px);
-            }
+    </div>
 
-            65% {
-                transform: translateY(1px);
-            }
+    <!-- ÁREA DE DOWNLOADS -->
+    <div class="downloads" id="downloads">
 
-            100% {
-                transform: translateY(0);
-            }
-        }
-
-        /* CELULAR */
-        @media (max-width: 600px) {
-
-            .app-card {
-                padding: 22px;
-            }
-
-            .top {
-                gap: 12px;
-            }
-
-            .logo {
-                width: 60px;
-                height: 60px;
-            }
-
-            .app-name {
-                font-size: 23px;
-            }
-
-            .download-main {
-                padding: 11px 16px;
-                font-size: 15px;
-            }
-
-            .description {
-                font-size: 16px;
-            }
-
-            .downloads {
-                padding: 25px 18px;
-            }
-        }
-    </style>
-</head>
-
-<body>
-
-    <div class="app-card">
-
-        <!-- PARTE SUPERIOR -->
-        <div class="top">
-
-            <!-- COLOQUE SUA LOGO COMO logo.png -->
-            <img src="logo.png" class="logo" alt="Logo do Trick Roll">
-
-            <h1 class="app-name">
-                Trick Roll
-            </h1>
-
-            <button class="download-main" onclick="mostrarDownloads()">
-                Baixar
-            </button>
-
-        </div>
-
-        <!-- DESCRIÇÃO -->
-        <div class="description">
-
-            <h2>Sobre o Trick Roll</h2>
-
-            <p>
-                O Trick Roll é um aplicativo criado para
-                proporcionar uma experiência simples, rápida
-                e divertida.
-            </p>
-
-            <p>
-                Com o aplicativo, você pode aproveitar seus
-                recursos de maneira fácil e intuitiva,
-                diretamente pelo seu celular.
-            </p>
-
-        </div>
-
-        <!-- ÁREA DE DOWNLOADS -->
-        <div class="downloads" id="downloads">
+        <div class="downloads-inner">
 
             <h2>Escolha sua plataforma</h2>
 
@@ -303,37 +331,41 @@
 
     </div>
 
-    <script>
+</div>
 
-        /* MOSTRAR DOWNLOADS */
-        function mostrarDownloads() {
+<script>
 
-            const downloads =
-                document.getElementById("downloads");
+    /* MOSTRAR DOWNLOADS */
+    function mostrarDownloads() {
 
-            downloads.classList.add("show");
+        const downloads =
+            document.getElementById("downloads");
+
+        downloads.classList.add("show");
+
+        setTimeout(() => {
 
             downloads.scrollIntoView({
                 behavior: "smooth",
                 block: "center"
             });
-        }
 
-        /* ANIMAÇÃO DO COMING SOON */
-        function comingSoon() {
+        }, 150);
+    }
 
-            const texto =
-                document.getElementById("comingSoon");
+    /* ANIMAÇÃO DO COMING SOON */
+    function comingSoon() {
 
-            texto.classList.remove("jump");
+        const texto =
+            document.getElementById("comingSoon");
 
-            // Reinicia a animação
-            void texto.offsetWidth;
+        texto.classList.remove("jump");
 
-            texto.classList.add("jump");
-        }
+        // Reinicia a animação
+        void texto.offsetWidth;
 
-    </script>
+        texto.classList.add("jump");
+    }
 
-</body>
-</html>
+</script>
+```
