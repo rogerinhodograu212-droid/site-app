@@ -87,7 +87,7 @@
         width: 100%;
         max-width: 500px;
 
-        /* COMEÇA SEM ALTURA */
+        /* ALTURA FECHADA */
         height: 0;
 
         margin: 0 auto;
@@ -116,12 +116,16 @@
 
     /* MOLDURA ABERTA */
     .downloads.show {
-        height: 500px;
+        /*
+         * Retângulo mais achatado:
+         * mantém a largura e reduz a altura.
+         */
+        height: 370px;
 
         margin-top: 30px;
 
-        padding-top: 30px;
-        padding-bottom: 30px;
+        padding-top: 25px;
+        padding-bottom: 25px;
 
         opacity: 1;
 
@@ -184,7 +188,7 @@
 
     /* OR */
     .or {
-        margin: 10px 0;
+        margin: 8px 0;
         color: #999;
         font-size: 15px;
         font-weight: bold;
@@ -217,10 +221,30 @@
 
     /* COMING SOON */
     .coming-soon {
-        margin-top: 7px;
+        margin-top: 5px;
         color: #1677ff;
         font-size: 14px;
         font-weight: bold;
+    }
+
+    /* INSTAGRAM */
+    .instagram-link {
+        display: block;
+        margin-top: 20px;
+
+        color: #173b70;
+
+        font-size: 15px;
+        font-weight: bold;
+
+        text-decoration: none;
+
+        transition: 0.2s;
+    }
+
+    .instagram-link:hover {
+        color: #0d2a52;
+        transform: translateY(-1px);
     }
 
     /* ANIMAÇÃO SUAVE */
@@ -281,8 +305,9 @@
         }
 
         .downloads.show {
-            height: 400px;
-            padding: 25px;
+            height: 350px;
+            padding-top: 22px;
+            padding-bottom: 22px;
         }
     }
 </style>
@@ -327,7 +352,7 @@
     </div>
 
 
-    <!-- MOLDURA QUADRADA DE DOWNLOADS -->
+    <!-- MOLDURA DE DOWNLOADS -->
     <div class="downloads" id="downloads">
 
         <div class="downloads-inner">
@@ -358,6 +383,16 @@
             <div class="coming-soon" id="comingSoon">
                 Coming Soon
             </div>
+
+            <!-- INSTAGRAM -->
+            <a
+                href="https://www.instagram.com/black_board.sb?igsh=MXFldGM0YnMzMmNwYQ=="
+                class="instagram-link"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Instagram: @black_board.sb
+            </a>
 
         </div>
 
