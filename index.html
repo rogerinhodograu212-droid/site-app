@@ -88,6 +88,19 @@
             margin-bottom: 10px;
         }
 
+        /* OBSERVAÇÃO SOBRE O PROJETO */
+        .indie-note {
+            margin-top: 22px;
+            color: #999;
+            font-size: 12px;
+            line-height: 1.5;
+            font-weight: normal;
+        }
+
+        .indie-note strong {
+            color: #777;
+        }
+
         /* MOLDURA DE DOWNLOADS */
         .downloads {
             width: 100%;
@@ -143,7 +156,7 @@
 
             overflow: hidden;
 
-            /* DESCE TODO O BLOCO DAS OPÇÕES */
+            /* DESCE O BLOCO DAS OPÇÕES */
             padding-top: 35px;
         }
 
@@ -155,7 +168,6 @@
             font-size: 21px;
             line-height: 1.2;
 
-            /* DESCE O TÍTULO */
             transform: translateY(8px);
         }
 
@@ -338,6 +350,10 @@
             .instagram-link {
                 font-size: 9px;
             }
+
+            .indie-note {
+                font-size: 11px;
+            }
         }
     </style>
 </head>
@@ -349,9 +365,11 @@
         <!-- PARTE SUPERIOR -->
         <div class="top">
 
-            <img src="logo.png"
-                 class="logo"
-                 alt="Logo do Trick Roll">
+            <img
+                src="logo.png"
+                class="logo"
+                alt="Logo do Trick Roll"
+            >
 
             <h1 class="app-name">
                 Trick Roll
@@ -360,10 +378,9 @@
             <button
                 class="download-main"
                 type="button"
-                onclick="mostrarDownloads()">
-
+                onclick="mostrarDownloads()"
+            >
                 Baixar
-
             </button>
 
         </div>
@@ -375,16 +392,38 @@
             <h2>Sobre o Trick Roll</h2>
 
             <p>
-                O Trick Roll é um aplicativo criado para
-                proporcionar uma experiência simples, rápida
-                e divertida.
+                O <strong>Trick Roll</strong> é um aplicativo
+                independente criado para deixar suas sessões
+                de skate mais divertidas, dinâmicas e
+                imprevisíveis. No centro do aplicativo existe
+                um dado que, ao ser clicado, sorteia
+                aleatoriamente uma manobra para você tentar mandar.
             </p>
 
             <p>
-                Com o aplicativo, você pode aproveitar seus
-                recursos de maneira fácil e intuitiva,
-                diretamente pelo seu celular.
+                O aplicativo possui
+                <strong>três níveis de dificuldade</strong> —
+                Iniciante, Intermediário e Avançado.
+                Conforme o nível aumenta, as manobras
+                sorteadas ficam mais desafiadoras, permitindo
+                escolher a dificuldade de acordo com sua experiência.
             </p>
+
+            <p>
+                Também é possível <strong>variar as bases</strong>
+                das manobras. Você pode escolher manter apenas
+                a base normal ou permitir diferentes bases,
+                como <strong>Normal, Switch e Fakie</strong>,
+                tornando cada sorteio ainda mais imprevisível.
+            </p>
+
+            <!-- OBSERVAÇÃO -->
+            <div class="indie-note">
+                Projeto independente e sem fins lucrativos,
+                desenvolvido pela comunidade
+                <strong>BlackBoard</strong> para diversão
+                e incentivo ao skate.
+            </div>
 
         </div>
 
@@ -427,9 +466,7 @@
                     class="ios-button"
                     onclick="comingSoon()"
                 >
-
                     iOS Download
-
                 </button>
 
 
@@ -487,6 +524,7 @@
 
             texto.classList.remove("jump");
 
+            /* Reinicia a animação */
             void texto.offsetWidth;
 
             texto.classList.add("jump");
