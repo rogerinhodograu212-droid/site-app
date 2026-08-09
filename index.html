@@ -142,6 +142,9 @@
             align-items: center;
 
             overflow: hidden;
+
+            /* DESCE TODO O BLOCO DAS OPÇÕES */
+            padding-top: 35px;
         }
 
         /* TÍTULO */
@@ -152,7 +155,8 @@
             font-size: 21px;
             line-height: 1.2;
 
-            transform: translateY(5px);
+            /* DESCE O TÍTULO */
+            transform: translateY(8px);
         }
 
         /* BOTÃO ANDROID */
@@ -321,10 +325,14 @@
                 padding-bottom: 10px;
             }
 
+            .downloads-inner {
+                padding-top: 25px;
+            }
+
             .downloads h2 {
                 font-size: 19px;
                 margin-bottom: 22px;
-                transform: translateY(3px);
+                transform: translateY(6px);
             }
 
             .instagram-link {
@@ -458,14 +466,8 @@
             const downloads =
                 document.getElementById("downloads");
 
-            /* Abre a moldura */
             downloads.classList.add("show");
 
-            /*
-             * Espera a animação começar
-             * e depois leva a página até
-             * a área de downloads.
-             */
             setTimeout(function () {
 
                 downloads.scrollIntoView({
@@ -485,7 +487,6 @@
 
             texto.classList.remove("jump");
 
-            /* Reinicia a animação */
             void texto.offsetWidth;
 
             texto.classList.add("jump");
