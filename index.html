@@ -24,9 +24,6 @@
         border-radius: 18px;
         padding: 28px 35px 40px;
         box-shadow: 0 8px 30px rgba(0, 0, 0, 0.10);
-
-        /* ANIMAÇÃO DA ALTURA */
-        transition: padding-bottom 0.5s ease;
     }
 
     /* PARTE DE CIMA */
@@ -89,37 +86,55 @@
     .downloads {
         display: grid;
         grid-template-rows: 0fr;
+
         margin-top: 0;
+
         background: white;
-        border: 1px solid transparent;
+
+        /* SEM BORDA */
+        border: none;
+
         border-radius: 15px;
+
         padding: 0 30px;
+
         text-align: center;
+
         opacity: 0;
 
         overflow: hidden;
 
+        /* SOMBRA INICIALMENTE INVISÍVEL */
+        box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+
         transition:
-            grid-template-rows 0.55s ease,
-            margin-top 0.55s ease,
-            padding-top 0.55s ease,
-            padding-bottom 0.55s ease,
-            opacity 0.35s ease,
-            border-color 0.55s ease;
+            grid-template-rows 0.6s ease,
+            margin-top 0.6s ease,
+            padding-top 0.6s ease,
+            padding-bottom 0.6s ease,
+            opacity 0.4s ease,
+            box-shadow 0.6s ease;
     }
 
+    /* CONTEÚDO INTERNO */
     .downloads-inner {
         min-height: 0;
         overflow: hidden;
     }
 
+    /* ÁREA ABERTA */
     .downloads.show {
         grid-template-rows: 1fr;
+
         margin-top: 30px;
+
         padding-top: 30px;
         padding-bottom: 30px;
+
         opacity: 1;
-        border-color: #e5e5e5;
+
+        /* MOLDURA COM SOMBRA LEVE */
+        box-shadow: 0 5px 22px rgba(0, 0, 0, 0.08);
     }
 
     .downloads h2 {
@@ -133,18 +148,26 @@
         align-items: center;
         justify-content: center;
         gap: 10px;
+
         width: 100%;
         max-width: 400px;
+
         margin: auto;
+
         padding: 15px;
+
         background: #34a853;
         color: white;
+
         border: none;
         border-radius: 9px;
+
         font-size: 17px;
         font-weight: bold;
+
         text-decoration: none;
         cursor: pointer;
+
         transition: 0.2s;
     }
 
@@ -170,14 +193,19 @@
     .ios-button {
         width: 100%;
         max-width: 400px;
+
         margin: auto;
         padding: 15px;
+
         background: #1677ff;
         color: white;
+
         border: none;
         border-radius: 9px;
+
         font-size: 17px;
         font-weight: bold;
+
         cursor: pointer;
     }
 
@@ -258,6 +286,7 @@
     }
 </style>
 
+
 <div class="app-card">
 
     <!-- PARTE SUPERIOR -->
@@ -275,6 +304,7 @@
         </button>
 
     </div>
+
 
     <!-- DESCRIÇÃO -->
     <div class="description">
@@ -295,12 +325,14 @@
 
     </div>
 
+
     <!-- ÁREA DE DOWNLOADS -->
     <div class="downloads" id="downloads">
 
         <div class="downloads-inner">
 
             <h2>Escolha sua plataforma</h2>
+
 
             <!-- ANDROID -->
             <a href="trick-roll.apk"
@@ -313,15 +345,18 @@
 
             </a>
 
+
             <!-- OR -->
             <div class="or">
                 OR
             </div>
 
+
             <!-- IOS -->
             <button class="ios-button" onclick="comingSoon()">
                 iOS Download
             </button>
+
 
             <div class="coming-soon" id="comingSoon">
                 Coming Soon
@@ -333,6 +368,7 @@
 
 </div>
 
+
 <script>
 
     /* MOSTRAR DOWNLOADS */
@@ -341,8 +377,13 @@
         const downloads =
             document.getElementById("downloads");
 
+        /* ATIVA A EXPANSÃO */
         downloads.classList.add("show");
 
+        /*
+         * Espera a expansão começar e então
+         * leva a página suavemente até as opções.
+         */
         setTimeout(() => {
 
             downloads.scrollIntoView({
@@ -350,8 +391,9 @@
                 block: "center"
             });
 
-        }, 150);
+        }, 100);
     }
+
 
     /* ANIMAÇÃO DO COMING SOON */
     function comingSoon() {
@@ -361,7 +403,7 @@
 
         texto.classList.remove("jump");
 
-        // Reinicia a animação
+        /* Reinicia a animação */
         void texto.offsetWidth;
 
         texto.classList.add("jump");
