@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Trick Roll</title>
+    <title>Trick Roll — Official Page</title>
 
     <style>
         * {
@@ -88,7 +88,7 @@
             margin-bottom: 10px;
         }
 
-        /* OBSERVAÇÃO SOBRE O PROJETO */
+        /* OBSERVAÇÃO */
         .indie-note {
             margin-top: 22px;
             color: #999;
@@ -138,7 +138,7 @@
             box-shadow: 0 6px 24px rgba(0, 0, 0, 0.09);
         }
 
-        /* CONTEÚDO DA MOLDURA */
+        /* CONTEÚDO */
         .downloads-inner {
             height: 100%;
 
@@ -196,7 +196,7 @@
             transform: translateY(-2px);
         }
 
-        /* ÍCONE ANDROID */
+        /* ÍCONE */
         .android-icon {
             font-size: 22px;
         }
@@ -484,14 +484,23 @@
 
             downloads.classList.add("show");
 
+            /*
+             * Aguarda a animação de abertura
+             * e depois desce a página.
+             */
             setTimeout(function () {
-
-                const alturaDaJanela =
-                    window.innerHeight;
 
                 const alturaDaPagina =
                     document.documentElement.scrollHeight;
 
+                const alturaDaJanela =
+                    window.innerHeight;
+
+                /*
+                 * Desce até o máximo possível,
+                 * deixando a moldura de downloads
+                 * completamente visível.
+                 */
                 const posicaoMaxima =
                     alturaDaPagina - alturaDaJanela;
 
@@ -500,7 +509,7 @@
                     behavior: "smooth"
                 });
 
-            }, 300);
+            }, 550);
         }
 
 
