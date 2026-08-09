@@ -1,445 +1,474 @@
 ```html
-<title>Trick Roll</title>
+<!DOCTYPE html>
+<html lang="pt-BR">
 
-<style>
-    * {
-        box-sizing: border-box;
-    }
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    body {
-        margin: 0;
-        min-height: 100vh;
-        font-family: Arial, Helvetica, sans-serif;
-        background: #f2f4f7;
-        color: #222;
-        padding: 40px 20px;
-    }
+    <title>Trick Roll</title>
 
-    /* RETÂNGULO PRINCIPAL */
-    .app-card {
-        width: 100%;
-        max-width: 850px;
-        margin: 0 auto;
-        background: white;
-        border-radius: 18px;
-        padding: 28px 35px 40px;
-        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.10);
-    }
-
-    /* PARTE DE CIMA */
-    .top {
-        display: flex;
-        align-items: center;
-        gap: 18px;
-    }
-
-    /* LOGO */
-    .logo {
-        width: 75px;
-        height: 75px;
-        border-radius: 18px;
-        object-fit: cover;
-    }
-
-    /* NOME DO APP */
-    .app-name {
-        font-size: 30px;
-        font-weight: bold;
-        margin: 0;
-        transform: translateX(8px);
-    }
-
-    /* BOTÃO BAIXAR */
-    .download-main {
-        margin-left: auto;
-        background: #1677ff;
-        color: white;
-        border: none;
-        border-radius: 9px;
-        padding: 14px 27px;
-        font-size: 17px;
-        font-weight: bold;
-        cursor: pointer;
-        transition: 0.2s;
-    }
-
-    .download-main:hover {
-        background: #075dcc;
-        transform: translateY(-2px);
-    }
-
-    /* DESCRIÇÃO */
-    .description {
-        margin-top: 35px;
-        line-height: 1.7;
-        color: #555;
-        font-size: 17px;
-    }
-
-    .description h2 {
-        color: #666;
-        font-size: 20px;
-        margin-bottom: 10px;
-    }
-
-    /* MOLDURA DE DOWNLOADS */
-    .downloads {
-        width: 100%;
-        max-width: 500px;
-
-        /* ALTURA FECHADA */
-        height: 0;
-
-        margin: 0 auto;
-
-        background: white;
-        border: none;
-        border-radius: 15px;
-
-        padding: 0 30px;
-
-        text-align: center;
-
-        opacity: 0;
-        overflow: hidden;
-
-        box-shadow: 0 0 0 rgba(0, 0, 0, 0);
-
-        transition:
-            height 0.6s ease,
-            margin-top 0.6s ease,
-            padding-top 0.6s ease,
-            padding-bottom 0.6s ease,
-            opacity 0.4s ease,
-            box-shadow 0.6s ease;
-    }
-
-    /* MOLDURA ABERTA */
-    .downloads.show {
-        /*
-         * Retângulo mais achatado:
-         * mantém a largura e reduz a altura.
-         */
-        height: 370px;
-
-        margin-top: 30px;
-
-        padding-top: 25px;
-        padding-bottom: 25px;
-
-        opacity: 1;
-
-        box-shadow: 0 6px 24px rgba(0, 0, 0, 0.09);
-    }
-
-    /* CONTEÚDO */
-    .downloads-inner {
-        height: 100%;
-
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-
-        overflow: hidden;
-    }
-
-    .downloads h2 {
-        margin: 0 0 18px 0;
-    }
-
-    /* BOTÃO ANDROID */
-    .android-button {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-
-        width: 100%;
-        max-width: 400px;
-
-        margin: 0 auto;
-
-        padding: 15px;
-
-        background: #34a853;
-        color: white;
-
-        border: none;
-        border-radius: 9px;
-
-        font-size: 17px;
-        font-weight: bold;
-
-        text-decoration: none;
-        cursor: pointer;
-
-        transition: 0.2s;
-    }
-
-    .android-button:hover {
-        background: #278c44;
-        transform: translateY(-2px);
-    }
-
-    /* ÍCONE ANDROID */
-    .android-icon {
-        font-size: 22px;
-    }
-
-    /* OR */
-    .or {
-        margin: 8px 0;
-        color: #999;
-        font-size: 15px;
-        font-weight: bold;
-    }
-
-    /* BOTÃO IOS */
-    .ios-button {
-        width: 100%;
-        max-width: 400px;
-
-        margin: 0 auto;
-
-        padding: 15px;
-
-        background: #1677ff;
-        color: white;
-
-        border: none;
-        border-radius: 9px;
-
-        font-size: 17px;
-        font-weight: bold;
-
-        cursor: pointer;
-    }
-
-    .ios-button:hover {
-        background: #075dcc;
-    }
-
-    /* COMING SOON */
-    .coming-soon {
-        margin-top: 5px;
-        color: #1677ff;
-        font-size: 14px;
-        font-weight: bold;
-    }
-
-    /* INSTAGRAM */
-    .instagram-link {
-        display: block;
-        margin-top: 20px;
-
-        color: #173b70;
-
-        font-size: 15px;
-        font-weight: bold;
-
-        text-decoration: none;
-
-        transition: 0.2s;
-    }
-
-    .instagram-link:hover {
-        color: #0d2a52;
-        transform: translateY(-1px);
-    }
-
-    /* ANIMAÇÃO SUAVE */
-    .jump {
-        animation: jump 0.45s ease;
-    }
-
-    @keyframes jump {
-        0% {
-            transform: translateY(0);
+    <style>
+        * {
+            box-sizing: border-box;
         }
 
-        35% {
-            transform: translateY(-3px);
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f2f4f7;
+            color: #222;
+            padding: 40px 20px;
         }
 
-        65% {
-            transform: translateY(1px);
-        }
-
-        100% {
-            transform: translateY(0);
-        }
-    }
-
-    /* CELULAR */
-    @media (max-width: 600px) {
-
+        /* RETÂNGULO PRINCIPAL */
         .app-card {
-            padding: 22px;
+            width: 100%;
+            max-width: 850px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 18px;
+            padding: 28px 35px 40px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.10);
         }
 
+        /* PARTE DE CIMA */
         .top {
-            gap: 12px;
+            display: flex;
+            align-items: center;
+            gap: 18px;
         }
 
+        /* LOGO */
         .logo {
-            width: 60px;
-            height: 60px;
+            width: 75px;
+            height: 75px;
+            border-radius: 18px;
+            object-fit: cover;
         }
 
+        /* NOME DO APP */
         .app-name {
-            font-size: 23px;
+            font-size: 30px;
+            font-weight: bold;
+            margin: 0;
             transform: translateX(8px);
         }
 
+        /* BOTÃO BAIXAR */
         .download-main {
-            padding: 11px 16px;
-            font-size: 15px;
+            margin-left: auto;
+            background: #1677ff;
+            color: white;
+            border: none;
+            border-radius: 9px;
+            padding: 14px 27px;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
         }
 
+        .download-main:hover {
+            background: #075dcc;
+            transform: translateY(-2px);
+        }
+
+        /* DESCRIÇÃO */
         .description {
-            font-size: 16px;
+            margin-top: 35px;
+            line-height: 1.7;
+            color: #555;
+            font-size: 17px;
         }
 
+        .description h2 {
+            color: #666;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        /* MOLDURA DE DOWNLOADS */
         .downloads {
-            max-width: 400px;
+            width: 100%;
+            max-width: 500px;
+
+            height: 0;
+
+            margin: 0 auto;
+
+            background: white;
+            border: none;
+            border-radius: 15px;
+
+            padding: 0 30px;
+
+            text-align: center;
+
+            opacity: 0;
+            overflow: hidden;
+
+            box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+
+            transition:
+                height 0.6s ease,
+                margin-top 0.6s ease,
+                padding-top 0.6s ease,
+                padding-bottom 0.6s ease,
+                opacity 0.4s ease,
+                box-shadow 0.6s ease;
         }
 
+        /* MOLDURA ABERTA */
         .downloads.show {
-            height: 350px;
-            padding-top: 22px;
-            padding-bottom: 22px;
+            height: 370px;
+
+            margin-top: 30px;
+
+            padding-top: 25px;
+            padding-bottom: 15px;
+
+            opacity: 1;
+
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.09);
         }
-    }
-</style>
 
+        /* CONTEÚDO */
+        .downloads-inner {
+            height: 100%;
 
-<div class="app-card">
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
 
-    <!-- PARTE SUPERIOR -->
-    <div class="top">
+            overflow: hidden;
+        }
 
-        <!-- COLOQUE SUA LOGO COMO logo.png -->
-        <img src="logo.png" class="logo" alt="Logo do Trick Roll">
+        /* TÍTULO DAS PLATAFORMAS */
+        .downloads h2 {
+            margin: 0 0 16px 0;
+            color: #444;
+            font-size: 21px;
 
-        <h1 class="app-name">
-            Trick Roll
-        </h1>
+            /* SOBE UM POUCO */
+            transform: translateY(-8px);
+        }
 
-        <button class="download-main" onclick="mostrarDownloads()">
-            Baixar
-        </button>
+        /* BOTÃO ANDROID */
+        .android-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
 
-    </div>
+            width: 100%;
+            max-width: 400px;
 
+            margin: 0 auto;
 
-    <!-- DESCRIÇÃO -->
-    <div class="description">
+            padding: 15px;
 
-        <h2>Sobre o Trick Roll</h2>
+            background: #34a853;
+            color: white;
 
-        <p>
-            O Trick Roll é um aplicativo criado para
-            proporcionar uma experiência simples, rápida
-            e divertida.
-        </p>
+            border: none;
+            border-radius: 9px;
 
-        <p>
-            Com o aplicativo, você pode aproveitar seus
-            recursos de maneira fácil e intuitiva,
-            diretamente pelo seu celular.
-        </p>
+            font-size: 17px;
+            font-weight: bold;
 
-    </div>
+            text-decoration: none;
+            cursor: pointer;
 
+            transition: 0.2s;
+        }
 
-    <!-- MOLDURA DE DOWNLOADS -->
-    <div class="downloads" id="downloads">
+        .android-button:hover {
+            background: #278c44;
+            transform: translateY(-2px);
+        }
 
-        <div class="downloads-inner">
+        /* ÍCONE ANDROID */
+        .android-icon {
+            font-size: 22px;
+        }
 
-            <h2>Escolha sua plataforma</h2>
+        /* OR */
+        .or {
+            margin: 8px 0;
+            color: #999;
+            font-size: 15px;
+            font-weight: bold;
+        }
 
-            <!-- ANDROID -->
-            <a href="trick-roll.apk"
-               class="android-button"
-               download>
+        /* BOTÃO IOS */
+        .ios-button {
+            width: 100%;
+            max-width: 400px;
 
-                <span class="android-icon">🤖</span>
+            margin: 0 auto;
 
-                Android Download
+            padding: 15px;
 
-            </a>
+            background: #1677ff;
+            color: white;
 
-            <!-- OR -->
-            <div class="or">
-                OR
-            </div>
+            border: none;
+            border-radius: 9px;
 
-            <!-- IOS -->
-            <button class="ios-button" onclick="comingSoon()">
-                iOS Download
+            font-size: 17px;
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        .ios-button:hover {
+            background: #075dcc;
+        }
+
+        /* COMING SOON */
+        .coming-soon {
+            margin-top: 5px;
+            color: #1677ff;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        /* INSTAGRAM */
+        .instagram-link {
+            display: block;
+
+            /* BEM PEQUENO */
+            margin-top: auto;
+            padding-top: 8px;
+
+            color: #4169e1;
+
+            font-size: 11px;
+            font-weight: bold;
+
+            text-decoration: none;
+
+            transition: 0.2s;
+        }
+
+        .instagram-link:hover {
+            color: #2f4fbe;
+        }
+
+        /* ANIMAÇÃO SUAVE */
+        .jump {
+            animation: jump 0.45s ease;
+        }
+
+        @keyframes jump {
+            0% {
+                transform: translateY(0);
+            }
+
+            35% {
+                transform: translateY(-3px);
+            }
+
+            65% {
+                transform: translateY(1px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        /* CELULAR */
+        @media (max-width: 600px) {
+
+            .app-card {
+                padding: 22px;
+            }
+
+            .top {
+                gap: 12px;
+            }
+
+            .logo {
+                width: 60px;
+                height: 60px;
+            }
+
+            .app-name {
+                font-size: 23px;
+                transform: translateX(8px);
+            }
+
+            .download-main {
+                padding: 11px 16px;
+                font-size: 15px;
+            }
+
+            .description {
+                font-size: 16px;
+            }
+
+            .downloads {
+                max-width: 400px;
+            }
+
+            .downloads.show {
+                height: 350px;
+                padding-top: 22px;
+                padding-bottom: 10px;
+            }
+
+            .downloads h2 {
+                font-size: 19px;
+                transform: translateY(-6px);
+            }
+
+            .instagram-link {
+                font-size: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="app-card">
+
+        <!-- PARTE SUPERIOR -->
+        <div class="top">
+
+            <!-- COLOQUE SUA LOGO COMO logo.png -->
+            <img src="logo.png" class="logo" alt="Logo do Trick Roll">
+
+            <h1 class="app-name">
+                Trick Roll
+            </h1>
+
+            <button class="download-main" onclick="mostrarDownloads()">
+                Baixar
             </button>
 
-            <div class="coming-soon" id="comingSoon">
-                Coming Soon
-            </div>
+        </div>
 
-            <!-- INSTAGRAM -->
-            <a
-                href="https://www.instagram.com/black_board.sb?igsh=MXFldGM0YnMzMmNwYQ=="
-                class="instagram-link"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                Instagram: @black_board.sb
-            </a>
+
+        <!-- DESCRIÇÃO -->
+        <div class="description">
+
+            <h2>Sobre o Trick Roll</h2>
+
+            <p>
+                O Trick Roll é um aplicativo criado para
+                proporcionar uma experiência simples, rápida
+                e divertida.
+            </p>
+
+            <p>
+                Com o aplicativo, você pode aproveitar seus
+                recursos de maneira fácil e intuitiva,
+                diretamente pelo seu celular.
+            </p>
+
+        </div>
+
+
+        <!-- MOLDURA DE DOWNLOADS -->
+        <div class="downloads" id="downloads">
+
+            <div class="downloads-inner">
+
+                <h2>Escolha sua plataforma</h2>
+
+                <!-- ANDROID -->
+                <a href="trick-roll.apk"
+                   class="android-button"
+                   download>
+
+                    <span class="android-icon">🤖</span>
+
+                    Android Download
+
+                </a>
+
+
+                <!-- OR -->
+                <div class="or">
+                    OR
+                </div>
+
+
+                <!-- IOS -->
+                <button class="ios-button" onclick="comingSoon()">
+                    iOS Download
+                </button>
+
+
+                <div class="coming-soon" id="comingSoon">
+                    Coming Soon
+                </div>
+
+
+                <!-- INSTAGRAM -->
+                <a
+                    href="https://www.instagram.com/black_board.sb?igsh=MXFldGM0YnMzMmNwYQ=="
+                    class="instagram-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    @black_board.sb
+                </a>
+
+            </div>
 
         </div>
 
     </div>
 
-</div>
+
+    <script>
+
+        /* MOSTRAR DOWNLOADS */
+        function mostrarDownloads() {
+
+            const downloads =
+                document.getElementById("downloads");
+
+            /* ATIVA A ANIMAÇÃO */
+            downloads.classList.add("show");
+
+            /*
+             * Espera a moldura começar a crescer
+             * antes de rolar a página.
+             */
+            setTimeout(() => {
+
+                downloads.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"
+                });
+
+            }, 150);
+        }
 
 
-<script>
+        /* ANIMAÇÃO DO COMING SOON */
+        function comingSoon() {
 
-    /* MOSTRAR DOWNLOADS */
-    function mostrarDownloads() {
+            const texto =
+                document.getElementById("comingSoon");
 
-        const downloads =
-            document.getElementById("downloads");
+            texto.classList.remove("jump");
 
-        /* ATIVA A ANIMAÇÃO */
-        downloads.classList.add("show");
+            /* Reinicia a animação */
+            void texto.offsetWidth;
 
-        /*
-         * Espera a moldura começar a crescer
-         * antes de rolar a página.
-         */
-        setTimeout(() => {
+            texto.classList.add("jump");
+        }
 
-            downloads.scrollIntoView({
-                behavior: "smooth",
-                block: "center"
-            });
+    </script>
 
-        }, 150);
-    }
+</body>
 
-
-    /* ANIMAÇÃO DO COMING SOON */
-    function comingSoon() {
-
-        const texto =
-            document.getElementById("comingSoon");
-
-        texto.classList.remove("jump");
-
-        /* Reinicia a animação */
-        void texto.offsetWidth;
-
-        texto.classList.add("jump");
-    }
-
-</script>
+</html>
 ```
