@@ -79,7 +79,7 @@
             margin-top: 35px;
             line-height: 1.7;
             color: #555;
-            font-size: 17px;
+            font-size: 15px;
         }
 
         .description h2 {
@@ -156,7 +156,6 @@
 
             overflow: hidden;
 
-            /* DESCE O BLOCO DAS OPÇÕES */
             padding-top: 35px;
         }
 
@@ -324,7 +323,7 @@
             }
 
             .description {
-                font-size: 16px;
+                font-size: 14px;
             }
 
             .downloads {
@@ -437,28 +436,23 @@
                     Escolha sua plataforma
                 </h2>
 
-
                 <!-- ANDROID -->
                 <a
                     href="trick-roll.apk"
                     class="android-button"
                     download
                 >
-
                     <span class="android-icon">
                         🤖
                     </span>
 
                     Android Download
-
                 </a>
-
 
                 <!-- OR -->
                 <div class="or">
                     OR
                 </div>
-
 
                 <!-- IOS -->
                 <button
@@ -469,14 +463,12 @@
                     iOS Download
                 </button>
 
-
                 <div
                     class="coming-soon"
                     id="comingSoon"
                 >
                     Coming Soon
                 </div>
-
 
                 <!-- INSTAGRAM -->
                 <a
@@ -505,14 +497,24 @@
 
             downloads.classList.add("show");
 
+            /*
+             * Espera a moldura começar a abrir
+             * e depois posiciona a página mais abaixo,
+             * deixando as opções de download visíveis.
+             */
             setTimeout(function () {
 
-                downloads.scrollIntoView({
-                    behavior: "smooth",
-                    block: "center"
+                const posicao =
+                    downloads.getBoundingClientRect().top
+                    + window.scrollY
+                    - 80;
+
+                window.scrollTo({
+                    top: posicao,
+                    behavior: "smooth"
                 });
 
-            }, 100);
+            }, 250);
         }
 
 
@@ -524,7 +526,6 @@
 
             texto.classList.remove("jump");
 
-            /* Reinicia a animação */
             void texto.offsetWidth;
 
             texto.classList.add("jump");
