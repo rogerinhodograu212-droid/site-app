@@ -152,7 +152,6 @@
             font-size: 21px;
             line-height: 1.2;
 
-            /* DESCE O TÍTULO */
             transform: translateY(5px);
         }
 
@@ -342,14 +341,21 @@
         <!-- PARTE SUPERIOR -->
         <div class="top">
 
-            <img src="logo.png" class="logo" alt="Logo do Trick Roll">
+            <img src="logo.png"
+                 class="logo"
+                 alt="Logo do Trick Roll">
 
             <h1 class="app-name">
                 Trick Roll
             </h1>
 
-            <button class="download-main" onclick="mostrarDownloads()">
+            <button
+                class="download-main"
+                type="button"
+                onclick="mostrarDownloads()">
+
                 Baixar
+
             </button>
 
         </div>
@@ -365,3 +371,128 @@
                 proporcionar uma experiência simples, rápida
                 e divertida.
             </p>
+
+            <p>
+                Com o aplicativo, você pode aproveitar seus
+                recursos de maneira fácil e intuitiva,
+                diretamente pelo seu celular.
+            </p>
+
+        </div>
+
+
+        <!-- MOLDURA DE DOWNLOADS -->
+        <div class="downloads" id="downloads">
+
+            <div class="downloads-inner">
+
+                <h2>
+                    Escolha sua plataforma
+                </h2>
+
+
+                <!-- ANDROID -->
+                <a
+                    href="trick-roll.apk"
+                    class="android-button"
+                    download
+                >
+
+                    <span class="android-icon">
+                        🤖
+                    </span>
+
+                    Android Download
+
+                </a>
+
+
+                <!-- OR -->
+                <div class="or">
+                    OR
+                </div>
+
+
+                <!-- IOS -->
+                <button
+                    type="button"
+                    class="ios-button"
+                    onclick="comingSoon()"
+                >
+
+                    iOS Download
+
+                </button>
+
+
+                <div
+                    class="coming-soon"
+                    id="comingSoon"
+                >
+                    Coming Soon
+                </div>
+
+
+                <!-- INSTAGRAM -->
+                <a
+                    href="https://www.instagram.com/black_board.sb?igsh=MXFldGM0YnMzMmNwYQ=="
+                    class="instagram-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    @black_board.sb
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        /* MOSTRAR DOWNLOADS */
+        function mostrarDownloads() {
+
+            const downloads =
+                document.getElementById("downloads");
+
+            /* Abre a moldura */
+            downloads.classList.add("show");
+
+            /*
+             * Espera a animação começar
+             * e depois leva a página até
+             * a área de downloads.
+             */
+            setTimeout(function () {
+
+                downloads.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"
+                });
+
+            }, 100);
+        }
+
+
+        /* ANIMAÇÃO DO COMING SOON */
+        function comingSoon() {
+
+            const texto =
+                document.getElementById("comingSoon");
+
+            texto.classList.remove("jump");
+
+            /* Reinicia a animação */
+            void texto.offsetWidth;
+
+            texto.classList.add("jump");
+        }
+
+    </script>
+
+</body>
+
+</html>
