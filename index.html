@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -126,33 +125,35 @@
 
             margin-top: 30px;
 
-            padding-top: 25px;
-            padding-bottom: 15px;
+            padding-top: 35px;
+            padding-bottom: 12px;
 
             opacity: 1;
 
             box-shadow: 0 6px 24px rgba(0, 0, 0, 0.09);
         }
 
-        /* CONTEÚDO */
+        /* CONTEÚDO DA MOLDURA */
         .downloads-inner {
             height: 100%;
 
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            align-items: center;
 
             overflow: hidden;
         }
 
-        /* TÍTULO DAS PLATAFORMAS */
+        /* TÍTULO */
         .downloads h2 {
-            margin: 0 0 16px 0;
+            margin: 0 0 24px 0;
+
             color: #444;
             font-size: 21px;
+            line-height: 1.2;
 
-            /* SOBE UM POUCO */
-            transform: translateY(-8px);
+            /* DESCE O TÍTULO */
+            transform: translateY(5px);
         }
 
         /* BOTÃO ANDROID */
@@ -197,6 +198,7 @@
         /* OR */
         .or {
             margin: 8px 0;
+
             color: #999;
             font-size: 15px;
             font-weight: bold;
@@ -230,6 +232,7 @@
         /* COMING SOON */
         .coming-soon {
             margin-top: 5px;
+
             color: #1677ff;
             font-size: 14px;
             font-weight: bold;
@@ -239,13 +242,12 @@
         .instagram-link {
             display: block;
 
-            /* BEM PEQUENO */
             margin-top: auto;
-            padding-top: 8px;
+            padding-top: 5px;
 
             color: #4169e1;
 
-            font-size: 11px;
+            font-size: 10px;
             font-weight: bold;
 
             text-decoration: none;
@@ -257,7 +259,7 @@
             color: #2f4fbe;
         }
 
-        /* ANIMAÇÃO SUAVE */
+        /* ANIMAÇÃO */
         .jump {
             animation: jump 0.45s ease;
         }
@@ -316,17 +318,18 @@
 
             .downloads.show {
                 height: 350px;
-                padding-top: 22px;
+                padding-top: 30px;
                 padding-bottom: 10px;
             }
 
             .downloads h2 {
                 font-size: 19px;
-                transform: translateY(-6px);
+                margin-bottom: 22px;
+                transform: translateY(3px);
             }
 
             .instagram-link {
-                font-size: 10px;
+                font-size: 9px;
             }
         }
     </style>
@@ -339,7 +342,6 @@
         <!-- PARTE SUPERIOR -->
         <div class="top">
 
-            <!-- COLOQUE SUA LOGO COMO logo.png -->
             <img src="logo.png" class="logo" alt="Logo do Trick Roll">
 
             <h1 class="app-name">
@@ -363,112 +365,3 @@
                 proporcionar uma experiência simples, rápida
                 e divertida.
             </p>
-
-            <p>
-                Com o aplicativo, você pode aproveitar seus
-                recursos de maneira fácil e intuitiva,
-                diretamente pelo seu celular.
-            </p>
-
-        </div>
-
-
-        <!-- MOLDURA DE DOWNLOADS -->
-        <div class="downloads" id="downloads">
-
-            <div class="downloads-inner">
-
-                <h2>Escolha sua plataforma</h2>
-
-                <!-- ANDROID -->
-                <a href="trick-roll.apk"
-                   class="android-button"
-                   download>
-
-                    <span class="android-icon">🤖</span>
-
-                    Android Download
-
-                </a>
-
-
-                <!-- OR -->
-                <div class="or">
-                    OR
-                </div>
-
-
-                <!-- IOS -->
-                <button class="ios-button" onclick="comingSoon()">
-                    iOS Download
-                </button>
-
-
-                <div class="coming-soon" id="comingSoon">
-                    Coming Soon
-                </div>
-
-
-                <!-- INSTAGRAM -->
-                <a
-                    href="https://www.instagram.com/black_board.sb?igsh=MXFldGM0YnMzMmNwYQ=="
-                    class="instagram-link"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    @black_board.sb
-                </a>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <script>
-
-        /* MOSTRAR DOWNLOADS */
-        function mostrarDownloads() {
-
-            const downloads =
-                document.getElementById("downloads");
-
-            /* ATIVA A ANIMAÇÃO */
-            downloads.classList.add("show");
-
-            /*
-             * Espera a moldura começar a crescer
-             * antes de rolar a página.
-             */
-            setTimeout(() => {
-
-                downloads.scrollIntoView({
-                    behavior: "smooth",
-                    block: "center"
-                });
-
-            }, 150);
-        }
-
-
-        /* ANIMAÇÃO DO COMING SOON */
-        function comingSoon() {
-
-            const texto =
-                document.getElementById("comingSoon");
-
-            texto.classList.remove("jump");
-
-            /* Reinicia a animação */
-            void texto.offsetWidth;
-
-            texto.classList.add("jump");
-        }
-
-    </script>
-
-</body>
-
-</html>
-```
