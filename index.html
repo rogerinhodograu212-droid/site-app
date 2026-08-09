@@ -7,6 +7,9 @@
 
     <title>Trick Roll — Official Page</title>
 
+    <!-- ÍCONE DO SITE -->
+    <link rel="icon" type="image/png" href="icon.png">
+
     <style>
         * {
             box-sizing: border-box;
@@ -196,7 +199,7 @@
             transform: translateY(-2px);
         }
 
-        /* ÍCONE */
+        /* ÍCONE ANDROID */
         .android-icon {
             font-size: 22px;
         }
@@ -484,10 +487,6 @@
 
             downloads.classList.add("show");
 
-            /*
-             * Aguarda a animação de abertura
-             * e depois desce a página.
-             */
             setTimeout(function () {
 
                 const alturaDaPagina =
@@ -496,11 +495,6 @@
                 const alturaDaJanela =
                     window.innerHeight;
 
-                /*
-                 * Desce até o máximo possível,
-                 * deixando a moldura de downloads
-                 * completamente visível.
-                 */
                 const posicaoMaxima =
                     alturaDaPagina - alturaDaJanela;
 
