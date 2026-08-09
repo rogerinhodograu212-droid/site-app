@@ -97,17 +97,11 @@
             font-weight: normal;
         }
 
-        .indie-note strong {
-            color: #777;
-        }
-
         /* MOLDURA DE DOWNLOADS */
         .downloads {
             width: 100%;
             max-width: 500px;
-
             height: 0;
-
             margin: 0 auto;
 
             background: white;
@@ -135,9 +129,7 @@
         /* MOLDURA ABERTA */
         .downloads.show {
             height: 370px;
-
             margin-top: 30px;
-
             padding-top: 35px;
             padding-bottom: 12px;
 
@@ -391,37 +383,32 @@
             <h2>Sobre o Trick Roll</h2>
 
             <p>
-                O <strong>Trick Roll</strong> é um aplicativo
-                independente criado para deixar suas sessões
-                de skate mais divertidas, dinâmicas e
-                imprevisíveis. No centro do aplicativo existe
-                um dado que, ao ser clicado, sorteia
-                aleatoriamente uma manobra para você tentar mandar.
+                O <strong>Trick Roll</strong> é um aplicativo independente
+                criado para deixar suas sessões de skate mais divertidas,
+                dinâmicas e imprevisíveis. No centro do aplicativo existe
+                um dado que, ao ser clicado, sorteia aleatoriamente uma
+                manobra para você tentar mandar.
             </p>
 
             <p>
-                O aplicativo possui
-                <strong>três níveis de dificuldade</strong> —
-                Iniciante, Intermediário e Avançado.
-                Conforme o nível aumenta, as manobras
-                sorteadas ficam mais desafiadoras, permitindo
-                escolher a dificuldade de acordo com sua experiência.
+                O aplicativo possui três níveis de dificuldade —
+                Iniciante, Intermediário e Avançado. Conforme o nível
+                aumenta, as manobras sorteadas ficam mais desafiadoras,
+                permitindo escolher a dificuldade de acordo com sua experiência.
             </p>
 
             <p>
-                Também é possível <strong>variar as bases</strong>
-                das manobras. Você pode escolher manter apenas
-                a base normal ou permitir diferentes bases,
-                como <strong>Normal, Switch e Fakie</strong>,
+                Também é possível variar as bases das manobras.
+                Você pode escolher manter apenas a base normal ou
+                permitir diferentes bases, como Normal, Switch e Fakie,
                 tornando cada sorteio ainda mais imprevisível.
             </p>
 
             <!-- OBSERVAÇÃO -->
             <div class="indie-note">
                 Projeto independente e sem fins lucrativos,
-                desenvolvido pela comunidade
-                <strong>BlackBoard</strong> para diversão
-                e incentivo ao skate.
+                desenvolvido pela comunidade BlackBoard para
+                diversão e incentivo ao skate.
             </div>
 
         </div>
@@ -497,24 +484,23 @@
 
             downloads.classList.add("show");
 
-            /*
-             * Espera a moldura começar a abrir
-             * e depois posiciona a página mais abaixo,
-             * deixando as opções de download visíveis.
-             */
             setTimeout(function () {
 
-                const posicao =
-                    downloads.getBoundingClientRect().top
-                    + window.scrollY
-                    - 80;
+                const alturaDaJanela =
+                    window.innerHeight;
+
+                const alturaDaPagina =
+                    document.documentElement.scrollHeight;
+
+                const posicaoMaxima =
+                    alturaDaPagina - alturaDaJanela;
 
                 window.scrollTo({
-                    top: posicao,
+                    top: posicaoMaxima,
                     behavior: "smooth"
                 });
 
-            }, 250);
+            }, 300);
         }
 
 
